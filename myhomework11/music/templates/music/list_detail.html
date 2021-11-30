@@ -1,0 +1,14 @@
+{% extends "music/layout.html" %}
+
+{% block content %}
+    <h2>{{ list.name }}</h2>
+
+    {%  if list.photo %}
+       <img src="{{ list.photo.url }}" style="max-width:100%;">
+    {% endif %}
+    {{ list.singer}}
+    {{ list.content|linebreaks  }}
+    <hr />
+    {{ list.updated_at }}
+
+{% endblock %}
