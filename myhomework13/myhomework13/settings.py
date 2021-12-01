@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'music',
 ]
 
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar'
+    ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,6 +54,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE = [
+        "debug_toolbar.middleware.DebugToolbarMiddleware"
+    ] + MIDDLEWARE
 
 ROOT_URLCONF = 'myhomework13.urls'
 
