@@ -22,7 +22,6 @@ from music.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('music/', index),
-
 ]
 
 urlpatterns += static(settings.MEDIA_URL,
