@@ -17,8 +17,12 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
+from ski.views import resort_list, resort_detail
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ski/', resort_list),
+    path('ski/<int:pk>', resort_detail )
 ]
 
 if settings.DEBUG:
