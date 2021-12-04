@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import  RegexValidator
+from django.core.validators import RegexValidator
 
 class Shop(models.Model):
     name = models.CharField(max_length=100, db_index=True)
