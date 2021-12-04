@@ -4,7 +4,8 @@ from ski.models import Resort
 
 
 class ResortAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["id", "name", "description", "latitude", "longitude", "telephone"]
+    list_display_links = ["name"]
 
 
 admin.site.register(Resort, ResortAdmin)  # 등록
