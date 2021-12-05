@@ -6,6 +6,11 @@ from ski.models import Resort
 
 def resort_list(request: HttpRequest) -> HttpResponse:
     qs = Resort.objects.all()
+
+    query = request.GET.get("query", "")
+    if query:
+        qs = qs.filter(name__icontains=query)
+
     context_data = {
         "shop_list": qs,
     }
