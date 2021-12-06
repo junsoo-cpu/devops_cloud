@@ -1,0 +1,30 @@
+{% extends "ski/layout.html" %}
+
+{% block content %}
+    <table>
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>telephone</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for resort in shop_list %}
+            <tr>
+                <td>
+                    <a href="{{ resort.pk }}">{{ resort.name }}</a>
+                </td>
+                <td>
+                    <a href="{{ resort.telephone }}">{{ resort.telephone }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+
+
+
+
+{% endblock %}
