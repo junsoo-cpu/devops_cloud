@@ -3,5 +3,5 @@ from ski.models import Resort
 
 @admin.register(Resort)
 class ResortAdmin(admin.ModelAdmin):
-    pass
-
+    list_display = ["id", "name", "description", "latitude", "longitude", "telephone"]
+    list_display_links = ["name"]
