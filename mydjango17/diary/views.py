@@ -16,4 +16,10 @@ def post_list(request: HttpRequest) -> HttpResponse:  # 첫번째 인자는 requ
 
 def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
     post = Post.objects.get(pk=pk)
-    return render(request, "diary/post_detail.html", {"post": post})
+    comment_list = post.comment_set.all()
+    tag_list = post.tag_set.all()
+    return render(request, "diary/post_detail.html", {
+        "post": post,
+        "comment_list": comment_list,
+        "tag_list": tag_list,
+    })

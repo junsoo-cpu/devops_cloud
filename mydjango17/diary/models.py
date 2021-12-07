@@ -25,7 +25,10 @@ class Post(TimestampedModel):
 
 
 class Comment(TimestampedModel):
+    # 왜래키 : 정수 값
     post = models.ForeignKey(Post, on_delete=models.CASCADE)  # 삭제 정책 on_delete
+    # post_id를 자동으로 생성
+
     author_name = models.CharField(max_length=20)
     message = models.TextField()
 
