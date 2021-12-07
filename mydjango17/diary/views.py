@@ -6,9 +6,9 @@ from diary.models import Post
 
 def post_list(request: HttpRequest) -> HttpResponse:  # 첫번째 인자는 request
     qs = Post.objects.all()
-    context_data = {
-
-    }
-    return render(request, "diary/post_list.html", {})
+    return render(request, "diary/post_list.html", {"post_list": qs})
 
 
+def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    post = Post.objects.get(pk=pk)
+    return render(request, "diary/post_detail.html", {"post": post})
