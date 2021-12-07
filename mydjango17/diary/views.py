@@ -1,3 +1,14 @@
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
+from diary.models import Post
+
+
+def post_list(request: HttpRequest) -> HttpResponse:  # 첫번째 인자는 request
+    qs = Post.objects.all()
+    context_data = {
+
+    }
+    return render(request, "diary/post_list.html", {})
+
+
