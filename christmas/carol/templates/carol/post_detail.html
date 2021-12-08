@@ -1,0 +1,45 @@
+{% extends "carol/layout.html" %}
+
+{% block content %}
+    <div style="text-align: center;">
+        <div class="text-white">
+            <h2>{{ post.title }}</h2>
+            <p>
+                태그:
+                {% for tag in tag_list %}
+                    <span class="badge bg-success">
+                {{ tag.name }}
+            </span>
+                {% endfor %}
+            </p>
+
+            <img src="{{ post.photo.url }}" alt="{{ post.title }}"/>
+            {{ post.content|linebreaks }}
+        </div>
+    </div>
+
+    <div class="text-white" style="margin-top: 2cm">
+        <h3>Comment</h3>
+
+        <ul class="nav nav-pills" >
+            {% for comment in comment_list %}
+                <li>
+                    {{ comment.message }}
+                    by {{ comment.name }}
+                    {{ comment.created_at|linebreaks }}
+                </li>
+            {% endfor %}
+        </ul>
+
+
+        <hr/>
+
+
+       <ul class="nav nav-pills" >
+            <li class="nav-item"><a href="{% url "carol:post_list" %}" class="nav-link active bg-danger">main</a></li>
+       </ul>
+    </div>
+
+
+
+{% endblock %}
