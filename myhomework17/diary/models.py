@@ -15,6 +15,7 @@ class Post(Timestamped):
     content = models.TextField()
     photo = models.ImageField(upload_to="diary/post/%Y/%m/%d")
     tag_set = models.ManyToManyField("Tag", blank=True)
+
     def __str__(self) -> str:
         return self.title
 

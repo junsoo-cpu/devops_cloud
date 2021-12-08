@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Comment)
-class CommnetAdmin(admin.ModelAdmin):
+class CommentAdmin(admin.ModelAdmin):
     pass
 
 
