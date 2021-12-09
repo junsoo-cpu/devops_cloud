@@ -15,4 +15,10 @@ from diary.models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = "__all__"      # 자동 추가
+        fields = [
+            "author_name",
+            "title",
+            "content",
+            "photo",
+            "tag_set",
+        ]

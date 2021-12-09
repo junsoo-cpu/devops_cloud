@@ -15,6 +15,8 @@ class Post(TimestampedModel):
     content = models.TextField()
     photo = models.ImageField(upload_to="diary/post/%Y/%m/%d")  # media 바로 밑에 저장, upload to 를 통해 경로 설정
     tag_set = models.ManyToManyField('Tag')  # 참조가 아니어서 Tag를 문자열로 지정 django app에서 Tag를 찾아줌
+    ip = models.GenericIPAddressField()
+
 
     def __str__(self) -> str:
         return self.title
