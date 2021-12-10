@@ -6,10 +6,12 @@ from diary import views
 
 app_name = "diary"
 
-#TODO : 편의상 여기에 root를 구현하지만 차후
+
+# TODO : 편의상 여기에 root를 구현하지만 차후
 # RedirectView CBV를 써서 이 구현을  제거할 예정
 def root(request):
     return redirect("diary:post_list")
+
 
 urlpatterns = [
     path("", views.post_list, name="post_list"),
@@ -17,4 +19,6 @@ urlpatterns = [
     path("new/", views.post_new, name="post_new"),
     path("<int:pk>/edit/", views.post_edit, name="post_edit"),
     path("tags/<str:tag_name>/", views.tag_detail, name="tag_detail"),
+    path("<int:post_pk>/comments/new", views.comment_new, name="comment_new"),
+    path("<int:post_pk>/comments/<int:pk>/edit", views.comment_edit, name="comment_edit"),
 ]
