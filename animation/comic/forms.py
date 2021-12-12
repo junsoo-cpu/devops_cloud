@@ -1,6 +1,6 @@
 from django import forms
 
-from comic.models import Post
+from comic.models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -12,3 +12,9 @@ class PostForm(forms.ModelForm):
             "photo",
             "tag_set",
         ]
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["author_name", "message"]
