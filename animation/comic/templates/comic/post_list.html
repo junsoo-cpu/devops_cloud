@@ -1,0 +1,16 @@
+{% extends "comic/layout.html" %}
+{% block content %}
+    <ul>
+        {% for post in post_list %}
+            <li>
+                {{ post.title }}
+                <img src="{{ post.photo.url }}"
+                    alt="{{ post.title }}"/>
+                {{ post.content }}
+                <a href="{% url "comic:post_detail" post.pk %}">
+                    바로 가기
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

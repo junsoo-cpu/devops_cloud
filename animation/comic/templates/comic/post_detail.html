@@ -1,0 +1,21 @@
+{% extends "comic/layout.html" %}
+{% block content %}
+    <h2>{{ post.title }}</h2>
+
+    <img src="{{ post.photo.url }}" alt="{{ post.title }}" />
+    {{ post.content|linebreaks }}
+    <h3>댓글</h3>
+    <ul>
+            <li>
+                {{ comment.message }}
+                by {{ comment.author_name }}
+                <span title="{{ comment.created_at }}">
+                    {{ comment.created_at|timesince }} 전
+                </span>
+            </li>
+    </ul>
+    <hr />
+    <a href="{% url "comic:post_list" %}">
+        목록으로
+    </a>
+{% endblock %}
