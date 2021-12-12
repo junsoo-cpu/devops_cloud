@@ -15,6 +15,7 @@ class Post(TimestampedModel):
     content = models.TextField(blank=True)
     photo = models.ImageField(upload_to="comic/post/%Y/%m/%d")
     tag_set = models.ManyToManyField('Tag', blank=True)
+    ip = models.GenericIPAddressField()
 
     def __str__(self) -> str:
         return self.title

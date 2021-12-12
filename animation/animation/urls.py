@@ -6,7 +6,7 @@ from django.urls import path, include
 
 
 def root(request):
-    return redirect("diary:post_list")
+    return redirect("comic:post_list")
 
 
 urlpatterns = [
