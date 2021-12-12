@@ -1,6 +1,7 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from comic.forms import PostForm
 from comic.models import Post
 
 
@@ -35,4 +36,19 @@ def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
         "post": post,
         "comment_list": comment_list,
         "tag_list": tag_list,
+    })
+
+def post_new(request: HttpRequest) -> HttpResponse:
+    if request.method == "GET":
+        form = PostForm()
+    else:
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("유효성 검사에 통과했습니다. :", form.cleaned_data)
+            form.save()
+            return redirect("comic:post_list")
+        else:
+            pass
+    return render(request, "comic/post_form.html", {
+        "form": form,
     })

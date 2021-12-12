@@ -4,8 +4,8 @@
         <input type="text"
                name="query"
                value="{{ request.GET.query }}"
-               placeholder="검색어를 입력해주세요." />
-        <input type="submit" value="검색" />
+               placeholder="검색어를 입력해주세요."/>
+        <input type="submit" value="검색"/>
     </form>
     <div class="row" style="margin-top: 1em;">
         {% for post in post_list %}
@@ -13,7 +13,7 @@
                 <div class="card">
                     <img src="{{ post.photo.url }}"
                          alt="{{ post.title }}"
-                         class="card-img-top" />
+                         class="card-img-top"/>
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
                         {{ post.content|truncatewords:20 }}
@@ -25,4 +25,8 @@
             </div>
         {% endfor %}
     </div>
+    <hr/>
+    <a href="{% url "comic:post_new" %}" class="btn btn-primary">
+        애니메이션 추가하기
+    </a>
 {% endblock %}
