@@ -1,5 +1,5 @@
 from django.contrib import admin
-from comic.models import Post, Review, Tag
+from comic.models import Post, Comment, Tag
 
 
 @admin.register(Post)
@@ -7,8 +7,8 @@ class PostAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Review)
-class ReviewAdmin(admin.ModelAdmin):
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
     pass
 
 
