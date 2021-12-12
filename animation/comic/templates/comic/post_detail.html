@@ -12,7 +12,7 @@
         {% endfor %}
     </p>
 
-    <img src="{{ post.photo.url }}" alt="{{ post.title }}" />
+    <img src="{{ post.photo.url }}" alt="{{ post.title }}"/>
 
     {{ post.content|linebreaks }}
 
@@ -28,9 +28,13 @@
         {% endfor %}
     </ul>
 
-    <hr />
+    <hr/>
 
     <a href="{% url "comic:post_list" %}">
         목록으로
+    </a>
+
+    <a href="{% url "comic:post_edit" post.pk %}">
+        수정하기
     </a>
 {% endblock %}
