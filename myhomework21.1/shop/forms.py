@@ -5,6 +5,13 @@ from shop.models import Shop, Tag
 class ShopForm(forms.ModelForm):
     tags = forms.CharField()
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance.pk:  # 수정 시
+            tag_qs = self.instance.tag_set.all()
+            tags = ", ".join([tag.name for tag in tag_qs])
+            self.fields["tags"].initial = tags
+
     def save(self):
         # 부모의 save를 호출해주어야 합니다.
         saved_post = super().save()
