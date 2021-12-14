@@ -1,0 +1,46 @@
+{% extends "comic/layout.html" %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p>
+        {% for tag in post.tag_set.all %}
+            <span class="badge" style="background-color: aqua;">
+            {{ tag.name }}
+        </span>
+        {% endfor %}
+    </p>
+    {{ post.content }}
+    <hr>
+    {{ post.created_at|timesince }}
+
+    <h3>댓글</h3>
+
+    <a href="{% url "comic:review_new"  post.pk %}">댓글 쓰기</a>
+
+    <ul>
+        {% for review in review_list %}
+            <li>
+                {{ review.message }}
+                by {{ review.name }}
+                <span title="{{ review.created_at }}">
+                    {{ review.created_at|timesince }} 전
+                </span>
+
+                <a href="{% url "comic:review_edit"  post.pk review.pk %}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    <hr>
+
+    <a href="{% url "comic:post_list" %}">
+        목록으로
+    </a>
+
+    <a href="{% url "comic:post_edit" post.pk %}">
+        수정하기
+    </a>
+
+
+{% endblock %}
