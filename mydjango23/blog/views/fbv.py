@@ -74,5 +74,5 @@ def post_delete(request: HttpRequest, pk: int) -> HttpResponse:
     )
 
     return render(request, "blog/post_confirm_delete.html", {
-        "post":post,
+        "post": post,
     })
