@@ -9,10 +9,14 @@
         </span>
         {% endfor %}
     </p>
-
-
     {{ shop.content }}
-
     <hr>
     {{ shop.created_at|timesince }}
+
+    <hr>
+    <a href="{% url "shop:shop_edit" shop.pk %}">
+        수정하기
+    </a>
+
+
 {% endblock %}

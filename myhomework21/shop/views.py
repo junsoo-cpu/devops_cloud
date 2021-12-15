@@ -19,7 +19,7 @@ def shop_list(request: HttpRequest) -> HttpResponse:
 
     return render(request, "shop/shop_list.html", {
         "shop_list": qs,
-        "category_list":category_qs
+        "category_list": category_qs
     })
 
 
@@ -39,6 +39,22 @@ def shop_new(request: HttpRequest) -> HttpResponse:
             return redirect("shop:shop_detail", saved_post.pk)
     else:
         form = ShopForm()
+
+    return render(request, "shop/shop_form.html", {
+        "form": form,
+    })
+
+
+def shop_edit(request: HttpRequest, pk: int) -> HttpResponse:
+    shop = get_object_or_404(Shop, pk=pk)
+    if request.method == "POST":
+        form = ShopForm(request.POST, request.FILES, instance=shop)
+        if form.is_valid():
+            saved_post = form.save()
+            # shop_detail 뷰를 구현했다면 !!!
+            return redirect("shop:shop_detail", saved_post.pk)
+    else:
+        form = ShopForm(instance=shop)
 
     return render(request, "shop/shop_form.html", {
         "form": form,

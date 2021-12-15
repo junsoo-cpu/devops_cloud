@@ -1,47 +1,50 @@
 {% extends "comic/layout.html" %}
 
 {% block content %}
-    <h2>{{ post.title }}</h2>
+    <div style="text-align: center;" class="text-white">
+        <h2>{{ post.title }}</h2>
 
-    <p>
-        태그:
-        {% for tag in tag_list %}
-            <a href="{% url "comic:tag_detail" tag.name %}" class="badge bg-success">
-                {{ tag.name }}
-            </a>
-        {% endfor %}
-    </p>
+        <p>
+            태그:
+            {% for tag in tag_list %}
+                <a href="{% url "comic:tag_detail" tag.name %}" class="badge bg-success">
+                    {{ tag.name }}
+                </a>
+            {% endfor %}
+        </p>
 
-    <img src="{{ post.photo.url }}" alt="{{ post.title }}"/>
+        <img src="{{ post.photo.url }}" alt="{{ post.title }}"/>
 
-    {{ post.content|linebreaks }}
+        {{ post.content|linebreaks }}
 
-    <h3>댓글</h3>
+    </div>
 
-    <a href="{% url "comic:comment_new" post.pk %}">댓글 쓰기</a>
+    <div class="text-white">
+        <h3>댓글</h3>
 
-    <ul>
-        {% for comment in comment_list %}
-            <li>
-                {{ comment.message }}
-                by {{ comment.author_name }}
-                at
-                <span title="{{ comment.created_at }}">
+        <a href="{% url "comic:comment_new" post.pk %}" class="btn btn-sm bg-white text-dark">댓글 쓰기</a>
+
+        <ul>
+            {% for comment in comment_list %}
+                <li>
+                    {{ comment.message }}
+                    by {{ comment.author_name }}
+                    at
+                    <span title="{{ comment.created_at }}">
                     {{ comment.created_at|timesince }} 전
                 </span>
+                    <a href="{% url "comic:comment_edit" post.pk comment.pk %}"
+                       class="btn btn-sm bg-white text-dark">수정하기</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <hr/>
+        <a href="{% url "comic:post_list" %}" class="btn btn-sm bg-white text-dark">
+            목록으로
+        </a>
 
-                <a href="{% url "comic:comment_edit" post.pk comment.pk %}">Edit</a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <hr/>
-
-    <a href="{% url "comic:post_list" %}">
-        목록으로
-    </a>
-
-    <a href="{% url "comic:post_edit" post.pk %}">
-        수정하기
-    </a>
+        <a href="{% url "comic:post_edit" post.pk %}" class="btn btn-sm bg-white text-dark">
+            수정하기
+        </a>
+    </div>
 {% endblock %}

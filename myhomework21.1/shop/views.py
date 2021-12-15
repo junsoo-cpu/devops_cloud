@@ -47,12 +47,12 @@ def shop_new(request: HttpRequest) -> HttpResponse:
 
 def shop_edit(request: HttpRequest, pk: int) -> HttpResponse:
     shop = get_object_or_404(Shop, pk=pk)
+
     if request.method == "POST":
         form = ShopForm(request.POST, request.FILES, instance=shop)
         if form.is_valid():
-            saved_post = form.save()
-            # shop_detail 뷰를 구현했다면 !!!
-            return redirect("shop:shop_detail", saved_post.pk)
+            saved_shop = form.save()
+            return redirect("shop:shop_detail", saved_shop.pk)
     else:
         form = ShopForm(instance=shop)
 

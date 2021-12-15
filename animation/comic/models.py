@@ -18,7 +18,7 @@ class Post(TimestampedModel):
     ip = models.GenericIPAddressField()
 
     def __str__(self) -> str:
-        return self.title
+        return f"[{self.pk}] {self.title}"
 
 
 class Comment(TimestampedModel):
