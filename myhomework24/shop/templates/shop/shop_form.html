@@ -11,10 +11,11 @@
         <input type="submit"/>
     </form>
 
+
     <hr/>
     {% if shop %}
-        <a href="{% url "shop:shop_detail" post.pk %}">
-            조회화면으로(취소)
+        <a href="{% url "shop:shop_detail" shop.pk %}">
+            조회화면으로
         </a>
     {% endif %}
 {% endblock %}
