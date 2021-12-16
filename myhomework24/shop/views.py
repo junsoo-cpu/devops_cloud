@@ -71,7 +71,13 @@ class ReviewUpdateView(UpdateView):
 
 review_edit = ReviewUpdateView.as_view()
 
-review_delete = DeleteView.as_view(
-    model=Review,
-    success_url=reverse_lazy("shop:shop_detail"),
-)
+
+class ReviewDeleteView(DeleteView):
+    model = Review
+
+    def get_success_url(self):
+        shop_pk = self.object.shop.pk
+        return reverse("shop:shop_detail", args=[shop_pk])
+
+
+review_delete = ReviewDeleteView.as_view()
