@@ -1,7 +1,7 @@
 from django.urls import path
 
-# from blog.views import fbv as views       # 함수 기반
-from blog.views import cbv as views         # 클래스 기반
+from blog.views import fbv as views       # 함수 기반
+# from blog.views import cbv as views         # 클래스 기반
 
 
 app_name = "blog"
