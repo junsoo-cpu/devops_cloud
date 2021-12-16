@@ -11,6 +11,19 @@
 
     {{ shop.content|linebreaks }}
 
+    <ul>
+        {% for review in object.review_set.all %}
+            <li>
+                {{ review.message }}
+                at
+                <span title="{{ review.created_at }}">
+                    {{ review.created_at|timesince }} 전
+                </span>
+                <a href="{% url "shop:review_edit" shop.pk review.pk %}">수정하기</a>
+                <a href="{% url "shop:review_delete" shop.pk review.pk %}">삭제하기</a>
+            </li>
+        {% endfor %}
+    </ul>
     <hr/>
     <a href="{% url "shop:shop_list" %}">
         포스팅 목록
@@ -22,6 +35,10 @@
 
     <a href="{% url "shop:shop_delete" shop.pk %}">
         포스팅 삭제
+    </a>
+
+    <a href="{% url "shop:review_new" shop.pk %}">
+        리뷰 쓰기
     </a>
 
 {% endblock %}
