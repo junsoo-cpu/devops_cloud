@@ -4,16 +4,22 @@
     <h2>Shop List</h2>
     <table>
         <thead>
-            {% for shop in shop_list %}
-                <tr>
-                    <td>
-                        <a href="{% url "shop:shop_detail" shop.pk %}">
-                            {{ shop.title }}
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
+        {% for shop in shop_list %}
+            <tr>
+                <td>
+                    <a href="{% url "shop:shop_detail" shop.pk %}">
+                        {{ shop.title }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
         </thead>
     </table>
+
+    <hr/>
+
+    <a href="{% url "shop:shop_new" %}">
+        포스팅 쓰기
+    </a>
 
 {% endblock %}
