@@ -39,6 +39,7 @@ class Shop(TimestampedModel):
         verbose_name = "상점"
         verbose_name_plural = "상점 목록"
 
+
 class Review(TimestampedModel):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -51,6 +52,7 @@ class Review(TimestampedModel):
         ordering = ["-id"]
         verbose_name = "리뷰"
         verbose_name_plural = "리뷰 목록"
+
 
 class Tag(TimestampedModel):
     name = models.CharField(max_length=200, unique=True)
