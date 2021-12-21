@@ -24,7 +24,7 @@ let ok_counter = 0;
 
 for (random_name of slice_names) {
     console.log(random_name);
-    const line = question("입력 >>> ");
+    const line = question(">>> ");
 
     if (line === random_name) {
         ok_counter++;
