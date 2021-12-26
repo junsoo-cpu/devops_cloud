@@ -2,6 +2,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import { Layout, List } from 'antd';
 import { useState } from 'react';
+import './Video.css';
 
 function Video() {
   const video_list = [
@@ -43,7 +44,7 @@ function Video() {
     },
     {
       title: '[𝙋𝙡𝙖𝙮𝙡𝙞𝙨𝙩] 자기 전, 누워서 그루브 타기 좋은 힙합 모음집',
-      youtube_id: 'https://www.youtube.com/watch?v=7frbAI5p7KA',
+      youtube_id: 'https://www.youtube.com/watch?v=1HRty0Yn8ZQ',
       thumbnail_url:
         'https://i.ytimg.com/vi/1HRty0Yn8ZQ/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBzq8IyDMacDNxZnzq7del7RchtMw',
     },
@@ -51,6 +52,8 @@ function Video() {
   // TODO: 리스트 형식으로 만들고 클릭 시 그 영상이 보여지도록
 
   const [youtubeUrl, setYoutubeUrl] = useState('');
+
+  const [title, setTitle] = useState('');
 
   const { Sider, Footer, Content } = Layout;
 
@@ -61,6 +64,7 @@ function Video() {
           <Content style={{ overflow: 'auto' }}>
             <div style={{ padding: 100 }}>
               <ReactPlayer url={youtubeUrl} />
+              <h2>{title}</h2>
             </div>
           </Content>
           <Sider
@@ -72,7 +76,7 @@ function Video() {
               right: 0,
               backgroundColor: 'white',
             }}
-            width={500}
+            width={350}
           >
             <List
               bordered={true}
@@ -81,10 +85,16 @@ function Video() {
               renderItem={(video) => (
                 <List.Item
                   bordered={true}
-                  onClick={() => setYoutubeUrl(video.youtube_id)}
+                  onClick={() => (
+                    setYoutubeUrl(video.youtube_id), setTitle(video.title)
+                  )}
                 >
-                  <img src={video.thumbnail_url} />
-                  <List.Item.Meta title={<h4>{video.title}</h4>} />
+                  <ul className="video">
+                    <li>
+                      <img src={video.thumbnail_url} />
+                      <List.Item.Meta title={<h4>{video.title}</h4>} />
+                    </li>
+                  </ul>
                 </List.Item>
               )}
             />
