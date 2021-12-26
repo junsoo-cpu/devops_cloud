@@ -17,7 +17,7 @@ function Lotto() {
     lotto.sort((a, b) => {
       return a - b;
     });
-    return Lotto;
+    return lotto;
   };
 
   const createNumber = () => {

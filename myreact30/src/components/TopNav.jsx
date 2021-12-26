@@ -13,7 +13,7 @@ function TopNav({ changePageName }) {
         <a onClick={() => changePageName('lotto')}>로또</a>
       </li>
       <li>
-        <a onClick={() => changePageName('playlist')}>플레이리스트</a>
+        <a onClick={() => changePageName('video')}>플레이리스트</a>
       </li>
     </ul>
   );

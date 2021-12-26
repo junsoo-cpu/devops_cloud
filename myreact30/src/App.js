@@ -1,8 +1,8 @@
 import PageAbout from 'pages/PageAbout';
 import PageCounter from 'pages/PageCounter';
 import PageLotto from 'pages/PageLotto';
-import PlayList from 'pages/PlayList';
 import TopNav from 'components/TopNav';
+import PageVideo from 'pages/PageVideo';
 
 import { useState } from 'react';
 
@@ -21,7 +21,7 @@ function App() {
       {pageName === 'about' && <PageAbout />}
       {pageName === 'counter' && <PageCounter />}
       {pageName === 'lotto' && <PageLotto />}
-      {pageName === 'playlist' && <PlayList />}
+      {pageName === 'video' && <PageVideo />}
     </>
   );
 }
