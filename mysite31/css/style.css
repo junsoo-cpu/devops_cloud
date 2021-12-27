@@ -134,8 +134,17 @@ section nav.others a {
   height: 30px;
   border-radius: 50%;
   margin: 0px 10px;
+  opacity: 0.4; /* 8단계 버튼 활성화하기 */
+  filter: saturate(0.7);
 }
 
+/* 8단계 버튼 활성화하기 */
+section nav.others a.on {
+  opacity: 1;
+  filter: saturate(1);
+}
+
+/* 7단계 - 멤버별 링크 만들기 */
 section nav.others a:nth-of-type(1) {
   background-color: #35e0f7;
   box-shadow: 5px 5px 10px rgba(74, 255, 255, 0.7);
