@@ -3,12 +3,13 @@
 
 /* 3단계 - CSS 초기화 */
 * {
-  margin: 0px;
+  margin: 0px; /* 여백 */
   padding: 0px;
   box-sizing: border-box;
 }
 ul,
 ol {
+  /* 전체 스타일 초기화 */
   list-style: none;
 }
 a {
@@ -25,6 +26,27 @@ section {
   padding: 30px;
   background-color: #fff;
   margin: 50px auto;
-  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1); /* 상자 끝을 둥글게 */
   border-radius: 10px;
+}
+
+/* 4단계 - 상단 버튼 만들기 */
+section nav.menu {
+  width: 100%;
+}
+section nav.menu::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+section nav.menu a {
+  font-size: 20px;
+  color: #666;
+}
+/* 인라인 요소 a를 선택해 float로 좌우 배치 */
+section nav.menu a:nth-of-type(1) {
+  float: left;
+}
+section nav.menu a:nth-of-type(2) {
+  float: right;
 }
