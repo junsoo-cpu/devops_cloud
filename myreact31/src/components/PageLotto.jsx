@@ -18,7 +18,7 @@ function PageLotto() {
   const [numbers, setNumbers] = useState([]);
 
   const handleClick = () => {
-    setNumbers(makeLottoNumbers);
+    setNumbers(makeLottoNumbers());
   };
 
   return (
