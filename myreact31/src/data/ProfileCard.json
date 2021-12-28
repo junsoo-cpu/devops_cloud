@@ -1,0 +1,31 @@
+[
+    {
+        
+        "name": "Anna",
+        "role": "student",
+        "facebook_url": "Visit My Facebook page.",
+        "email": "Annn1133@naver.com"
+    },
+    {
+        
+        "name": "Alice",
+        "role": "police",
+        "facebook_url": "Visit My Facebook page.",
+        "email": "buww11@naver.com"
+    },
+    {
+        
+        "name": "Dred",
+        "role": "student",
+        "facebook_url": "Visit My Facebook page.",
+        "email": "hello22@naver.com"
+    },
+    {
+        
+        "name": "Davis",
+        "role": "teacher",
+        "facebook_url": "Visit My Facebook page.",
+        "email": "hadaboni20@naver.com"
+    }
+]
+

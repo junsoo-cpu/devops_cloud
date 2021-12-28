@@ -1,54 +1,49 @@
 import "./ProfileCard.css";
+import ProfileImage from "./img/member1.jpg";
 
-function ProfileCard({
-  profileImage,
-  name,
-  role,
-  facebook_url,
-  email,
-  changePageName,
-}) {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faStickyNote } from "@fortawesome/free-solid-svg-icons";
+
+function ProfileCard({ name, role, facebook_url, email, changePageName }) {
   return (
-    <body className="member1">
-      <section>
-        <nav className="menu">
-          <a href="#">
-            <i className="fas fa-bars"></i>
-          </a>
-          <a href="#">
-            <i className="far fa-sticky-note"></i>
-          </a>
-        </nav>
-        <article className="profile">
-          <img src={profileImage} alt="프로필 이미지" />
+    <section>
+      <nav className="menu">
+        <a href="#">
+          <FontAwesomeIcon icon={faBars} />
+        </a>
+        <a href="#">
+          <FontAwesomeIcon icon={faStickyNote} />
+        </a>
+      </nav>
+      <article className="profile">
+        <img src={ProfileImage} alt="프로필 이미지" />
 
-          <h1>{name}</h1>
-          <h2>{role}</h2>
+        <h1>{name}</h1>
+        <h2>{role}</h2>
 
-          <a href="#" className="btnView">
-            VIEW MORE
-          </a>
-        </article>
+        <a href="#" className="btnView">
+          VIEW MORE
+        </a>
+      </article>
 
-        <ul class="contact">
-          <li>
-            <i className="fab fa-facebook-f"></i>
-            <span>{facebook_url}</span>
-          </li>
-          <li>
-            <i className="fas fa-envelope"></i>
-            <span>{email}</span>
-          </li>
-        </ul>
+      <ul class="contact">
+        <li>
+          <i className="fab fa-facebook-f"></i>
+          <span>{facebook_url}</span>
+        </li>
+        <li>
+          <i class="fas fa-envelope-square"></i>
+          <span>{email}</span>
+        </li>
+      </ul>
 
-        <nav className="others">
-          <a className="on" onClick={() => changePageName("member1")}></a>
-          <a className="on" onClick={() => changePageName("member2")}></a>
-          <a className="on" onClick={() => changePageName("member3")}></a>
-          <a className="on" onClick={() => changePageName("member4")}></a>
-        </nav>
-      </section>
-    </body>
+      <nav className="others">
+        <a className="on" onClick={() => changePageName("Anna")}></a>
+        <a className="on" onClick={() => changePageName("Alice")}></a>
+        <a className="on" onClick={() => changePageName("Dred")}></a>
+        <a className="on" onClick={() => changePageName("Davis")}></a>
+      </nav>
+    </section>
   );
 }
 
