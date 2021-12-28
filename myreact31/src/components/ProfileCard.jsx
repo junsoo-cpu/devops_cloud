@@ -1,10 +1,16 @@
 import "./ProfileCard.css";
-import ProfileImage from "./img/member1.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faStickyNote } from "@fortawesome/free-solid-svg-icons";
 
-function ProfileCard({ name, role, facebook_url, email, changePageName }) {
+function ProfileCard({
+  name,
+  role,
+  facebook_url,
+  email,
+  profileImage,
+  children,
+}) {
   return (
     <section>
       <nav className="menu">
@@ -16,7 +22,7 @@ function ProfileCard({ name, role, facebook_url, email, changePageName }) {
         </a>
       </nav>
       <article className="profile">
-        <img src={ProfileImage} alt="프로필 이미지" />
+        <img src={profileImage} alt="프로필 이미지" />
 
         <h1>{name}</h1>
         <h2>{role}</h2>
@@ -37,12 +43,7 @@ function ProfileCard({ name, role, facebook_url, email, changePageName }) {
         </li>
       </ul>
 
-      <nav className="others">
-        <a className="on" onClick={() => changePageName("Anna")}></a>
-        <a className="on" onClick={() => changePageName("Alice")}></a>
-        <a className="on" onClick={() => changePageName("Dred")}></a>
-        <a className="on" onClick={() => changePageName("Davis")}></a>
-      </nav>
+      <nav className="others">{children}</nav>
     </section>
   );
 }
