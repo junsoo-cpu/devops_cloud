@@ -2,30 +2,33 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 
 function PageProfile() {
-  const handleRefresh = () => {
-    const [profileList, setProfileList] = useState([]);
-    useEffect(() => {
-      Axios.get(
-        'https://classdevopscloud.blob.core.windows.net/data/profile-list.json',
-      )
-        .then((response) => {
-          const newProfileList = response.data.map((profile) => ({
-            ...profile,
-            instagramUrl: profile.instagram_url,
-            profileImageUrl: profile.profile_image_url,
-          }));
+  const [profileList, setProfileList] = useState([]);
 
-          setProfileList(newProfileList);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, []);
+  const handleRefresh = () => {
+    Axios.get(
+      'https://classdevopscloud.blob.core.windows.net/data/profile-list.json',
+    )
+      .then((response) => {
+        const newProfileList = response.data.map((profile) => ({
+          ...profile,
+          instagramUrl: profile.instagram_url,
+          profileImageUrl: profile.profile_image_url,
+        }));
+
+        setProfileList(newProfileList);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleClear = () => {
     return setProfileList([]);
   };
+
+  useEffect(() => {
+    handleRefresh();
+  }, []);
 
   return (
     <div>
