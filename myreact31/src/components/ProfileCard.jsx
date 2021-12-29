@@ -6,9 +6,9 @@ import { faBars, faStickyNote } from "@fortawesome/free-solid-svg-icons";
 function ProfileCard({
   name,
   role,
-  facebook_url,
-  email,
-  profileImage,
+  instagram_url,
+  mbti,
+  profile_image_url,
   children,
 }) {
   return (
@@ -22,7 +22,7 @@ function ProfileCard({
         </a>
       </nav>
       <article className="profile">
-        <img src={profileImage} alt="프로필 이미지" />
+        <img src={profile_image_url} alt="프로필 이미지" />
 
         <h1>{name}</h1>
         <h2>{role}</h2>
@@ -35,11 +35,11 @@ function ProfileCard({
       <ul class="contact">
         <li>
           <i className="fab fa-facebook-f"></i>
-          <span>{facebook_url}</span>
+          <span>{instagram_url}</span>
         </li>
         <li>
           <i class="fas fa-envelope-square"></i>
-          <span>{email}</span>
+          <span>{mbti}</span>
         </li>
       </ul>
 
