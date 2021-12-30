@@ -3,7 +3,6 @@ import Axios from 'axios';
 
 function PageProfile() {
   const [profileList, setProfileList] = useState([]);
-
   const [error, setError] = useState(null);
 
   const handleRefresh = () => {
