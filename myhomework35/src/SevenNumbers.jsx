@@ -7,7 +7,18 @@ function reducer(state, action) {
       ...state,
       numbers: makeNumbers(),
     };
+  } else if (type === 'SHUFFLE_NUMBERS') {
+    return {
+      ...state,
+      numbers: state.numbers.sort(() => Math.random() - Math.random()),
+    };
+  } else if (type === 'SHUFFLE_COLORS') {
+    return {
+      ...state,
+      colors: state.colors.sort(() => Math.random() - Math.random()),
+    };
   }
+  return state;
 }
 
 const makeNumbers = () => {
@@ -42,10 +53,20 @@ function SevenNumbers() {
     dispatch({ type: 'GENERATE_NUMBERS' });
   };
 
+  const shuffleNumbers = () => {
+    dispatch({ type: 'SHUFFLE_NUMBERS' });
+  };
+
+  const shuffleColors = () => {
+    dispatch({ type: 'SHUFFLE_COLORS' });
+  };
+
   return (
     <div>
       <h2>7개의 숫자</h2>
       <button onClick={generateNumbers}>7개 숫자</button>
+      <button onClick={shuffleNumbers}>숫자 섞기</button>
+      <button onClick={shuffleColors}>색깔 섞기</button>
       <hr />
       {state.numbers.map((number, index) => {
         return (
