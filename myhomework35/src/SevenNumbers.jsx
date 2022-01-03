@@ -45,12 +45,33 @@ function SevenNumbers() {
   return (
     <div>
       <h2>7개의 숫자</h2>
-      <hr />
       <button onClick={generateNumbers}>7개 숫자</button>
-      {state.numbers.map((number) => {
-        return <div>{number}</div>;
+      <hr />
+      {state.numbers.map((number, index) => {
+        return (
+          <div
+            style={{
+              ...defaultStyle,
+              backgroundColor: state.colors[index],
+            }}
+          >
+            {number}
+          </div>
+        );
       })}
     </div>
   );
 }
 export default SevenNumbers;
+
+const defaultStyle = {
+  width: '100px',
+  height: '100px',
+  borderRadius: '50px',
+  lineHeight: '100px',
+  textAlign: 'center',
+  display: 'inline-block',
+  fontSize: '3rem',
+  userSelect: 'none',
+  margin: '1rem',
+};
