@@ -1,5 +1,15 @@
 import { useReducer } from 'react';
 
+function reducer(state, action) {
+  const { type } = action;
+  if (type === 'GENERATE_NUMBERS') {
+    return {
+      ...state,
+      numbers: makeNumbers(),
+    };
+  }
+}
+
 const makeNumbers = () => {
   const randomNumber = [];
   while (randomNumber.length < 7) {
@@ -28,9 +38,18 @@ function SevenNumbers() {
     ],
   });
 
+  const generateNumbers = () => {
+    dispatch({ type: 'GENERATE_NUMBERS' });
+  };
+
   return (
     <div>
       <h2>7개의 숫자</h2>
+      <hr />
+      <button onClick={generateNumbers}>7개 숫자</button>
+      {state.numbers.map((number) => {
+        return <div>{number}</div>;
+      })}
     </div>
   );
 }
