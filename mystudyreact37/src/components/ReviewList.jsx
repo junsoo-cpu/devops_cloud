@@ -5,9 +5,9 @@ import './ReviewList.css';
 import Review from './Review';
 
 const INITIAL_STATE = [
-  { content: '재미있는 영화', number: 5 },
-  { content: '반전의 연속', number: 4 },
-  { content: '두번 보고 싶은 영화', number: 5 },
+  { id: 1, content: '재미있는 영화', number: 5 },
+  { id: 2, content: '반전의 연속', number: 4 },
+  { id: 3, content: '두번 보고 싶은 영화', number: 5 },
 ];
 
 function ReviewList() {
@@ -18,7 +18,9 @@ function ReviewList() {
   });
 
   const appendReview = () => {
-    const review = { ...fieldValues };
+    const reviewId = new Date().getTime();
+
+    const review = { ...fieldValues, id: reviewId };
     setReviewList((prevReviewList) => [...prevReviewList, review]);
     clearFieldValues();
   };
