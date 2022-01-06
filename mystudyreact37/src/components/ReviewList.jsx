@@ -12,17 +12,48 @@ const INITIAL_STATE = [
 
 function ReviewList() {
   const [reviewList, setReviewList] = useState(INITIAL_STATE);
-  const [fieldValues, handleChange, clearFieldValues] = useFieldValues({
-    content: '',
-    number: 0,
-  });
+  const [fieldValues, handleChange, clearFieldValues, setFieldValues] =
+    useFieldValues({
+      content: '',
+      number: 0,
+    });
 
   const appendReview = () => {
-    const reviewId = new Date().getTime();
+    const { id: reviewId } = fieldValues;
 
-    const review = { ...fieldValues, id: reviewId };
-    setReviewList((prevReviewList) => [...prevReviewList, review]);
-    clearFieldValues();
+    // 새로운 리뷰 저장
+    if (!reviewId) {
+      reviewId = new Date().getTime();
+      const createdReview = { ...fieldValues, id: reviewId };
+      setReviewList((prevReviewList) => [...prevReviewList, createdReview]);
+      clearFieldValues();
+    }
+    // 기존 리뷰 수정
+    else {
+      const editedReview = { ...fieldValues };
+      setReviewList((prevReviewList) =>
+        prevReviewList.map((review) => {
+          if (review.id === editedReview.id) return editedReview;
+          return review;
+        }),
+      );
+    }
+  };
+
+  const willEditReview = (editingReview) => {
+    setFieldValues(editingReview);
+    handleButton();
+  };
+
+  const deleteReview = (deletingReview) => {
+    setReviewList((prevReviewList) =>
+      // prevReviewList.filter((review) => review.id !== deletingReview.id),
+      prevReviewList.filter(
+        ({ id: reviewId }) => reviewId !== deletingReview.id,
+      ),
+    );
+    return true;
+    // TODO : reviewList 배열 상탯값에서 deletingReview에 해당하는 리뷰를 제거
   };
 
   const [reviewButton, setReviewButton] = useState('a');
@@ -60,7 +91,12 @@ function ReviewList() {
       )}
 
       {reviewList.map((review) => (
-        <Review review={review} />
+        <Review
+          key={review.id}
+          review={review}
+          handleEdit={() => willEditReview(review)}
+          handleDelete={() => deleteReview(review)}
+        />
       ))}
     </div>
   );
